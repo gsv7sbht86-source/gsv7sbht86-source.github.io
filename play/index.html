@@ -26,6 +26,15 @@
 </head>
 <body>
   <div id="boot"><img src="icons/Icon-192.png" alt=""><div class="dot"></div></div>
+  <script>
+    // Phones report a 3x screen; drawing the game at 2x is ~2x cheaper and looks the same.
+    (function () {
+      var r = window.devicePixelRatio || 1;
+      if (r > 2) {
+        try { Object.defineProperty(window, "devicePixelRatio", { get: function () { return 2; } }); } catch (e) {}
+      }
+    })();
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
